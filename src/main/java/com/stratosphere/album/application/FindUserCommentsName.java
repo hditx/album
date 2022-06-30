@@ -8,22 +8,22 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
-public class FindUserComments {
-    private static final String URL_USER = "https://jsonplaceholder.typicode.com/users?username=";
+public class FindUserCommentsName {
+    private static final String URL_USER = "https://jsonplaceholder.typicode.com/users?name=";
     private static final String URL_POST = "https://jsonplaceholder.typicode.com/posts?userId=";
     private static final String URL_COMMENT = "https://jsonplaceholder.typicode.com/comments?postId=";
     @Autowired
     private RestTemplate restTemplate;
 
-    public List<Object> invoke(String username) {
-        Long userId = getUserId(username);
+    public List<Object> invoke(String name) {
+        Long userId = getUserId(name);
         List<Long> postIdList = getPostIdList(userId);
         return getComments(postIdList);
     }
 
-    private Long getUserId(String username) {
+    private Long getUserId(String name) {
         var user = restTemplate
-                .getForEntity(URL_USER + username, Object.class)
+                .getForEntity(URL_USER + name, Object.class)
                 .getBody();
         assert user != null;
         return Long.parseLong(((LinkedHashMap) ((ArrayList) user).get(0)).get("id").toString());
