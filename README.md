@@ -18,6 +18,7 @@ instaladas:
 En caso de no reemplazar el usuario y contrasenia del application.properties
 correr el script _**createUser.sql**_ de SQL que se encuentra en
 **resource/script**
+
 ##Documentacion
 Para saber como funcionan los endpoint y los que tiene acceder al swagger
 a traves de la URL **localhost:8080/swagger-ui.html**
